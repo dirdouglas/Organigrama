@@ -4,74 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organograma PCM</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages:["orgchart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('string', 'Manager');
+            data.addColumn('string', 'ToolTip');
+
+            // Adicione os dados do organograma
+            data.addRows([
+                [{'v':'GerenteManutencao', 'f':'Gerente de Manutenção<div><img src="path/to/photo1.jpg" style="width:60px;height:60px;border-radius:50%;"></div>'}, '', 'Supervisão geral das operações de manutenção'],
+                [{'v':'AnalistaPlanejamento', 'f':'Analista de Planejamento Preventivo<div><img src="path/to/photo2.jpg" style="width:60px;height:60px;border-radius:50%;"></div>'}, 'GerenteManutencao', 'Desenvolve e gerencia planos de manutenção preventiva'],
+                [{'v':'AnalistaCustos', 'f':'Analista de Custos e Indicadores<div><img src="path/to/photo3.jpg" style="width:60px;height:60px;border-radius:50%;"></div>'}, 'GerenteManutencao', 'Monitora custos de manutenção e indicadores de desempenho'],
+                [{'v':'ControleOS', 'f':'Controle de Ordens de Serviço 24 horas<div><img src="path/to/photo4.jpg" style="width:60px;height:60px;border-radius:50%;"></div>'}, 'GerenteManutencao', 'Monitora e gerencia ordens de serviço em tempo real'],
+                [{'v':'Pneus', 'f':'Pneus<div><img src="path/to/photo5.jpg" style="width:60px;height:60px;border-radius:50%;"></div>'}, 'GerenteManutencao', 'Gerencia a manutenção e substituição de pneus'],
+                [{'v':'ComprasEstoque', 'f':'Solicitação de Compras e Estoque<div><img src="path/to/photo6.jpg" style="width:60px;height:60px;border-radius:50%;"></div>'}, 'GerenteManutencao', 'Gerencia compras de peças e serviços terceirizados'],
+                [{'v':'Terceirizacao', 'f':'Terceirização de Serviços e Orçamento<div><img src="path/to/photo7.jpg" style="width:60px;height:60px;border-radius:50%;"></div>'}, 'GerenteManutencao', 'Gerencia a terceirização de serviços e orçamento']
+            ]);
+
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            chart.draw(data, {'allowHtml':true});
+        }
+    </script>
     <style>
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        body {
+            font-family: Arial, sans-serif;
         }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px;
-            width: 300px;
-            text-align: center;
-        }
-        .photo {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin-bottom: 15px;
-        }
-        .title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .description {
-            font-size: 16px;
+        #chart_div {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <img src="path/to/photo1.jpg" alt="Gerente de Manutenção" class="photo">
-            <div class="title">Gerente de Manutenção</div>
-            <div class="description">Supervisão geral das operações de manutenção, incluindo o PCM.</div>
-        </div>
-        <div class="card">
-            <img src="path/to/photo2.jpg" alt="Analista de Planejamento Preventivo" class="photo">
-            <div class="title">Analista de Planejamento Preventivo</div>
-            <div class="description">Desenvolve e gerencia planos de manutenção preventiva.</div>
-        </div>
-        <div class="card">
-            <img src="path/to/photo3.jpg" alt="Analista de Custos e Indicadores" class="photo">
-            <div class="title">Analista de Custos e Indicadores</div>
-            <div class="description">Monitora custos de manutenção e indicadores de desempenho.</div>
-        </div>
-        <div class="card">
-            <img src="path/to/photo4.jpg" alt="Controle de Ordens de Serviço 24 horas" class="photo">
-            <div class="title">Controle de Ordens de Serviço 24 horas</div>
-            <div class="description">Monitora e gerencia ordens de serviço em tempo real.</div>
-        </div>
-        <div class="card">
-            <img src="path/to/photo5.jpg" alt="Pneus" class="photo">
-            <div class="title">Pneus</div>
-            <div class="description">Gerencia a manutenção e substituição de pneus.</div>
-        </div>
-        <div class="card">
-            <img src="path/to/photo6.jpg" alt="Solicitação de Compras e Estoque" class="photo">
-            <div class="title">Solicitação de Compras e Estoque</div>
-            <div class="description">Gerencia compras de peças e serviços terceirizados.</div>
-        </div>
-        <div class="card">
-            <img src="path/to/photo7.jpg" alt="Terceirização de Serviços e Orçamento" class="photo">
-            <div class="title">Terceirização de Serviços e Orçamento</div>
-            <div class="description">Gerencia a terceirização de serviços e orçamento.</div>
-        </div>
-    </div>
+    <div id="chart_div"></div>
 </body>
 </html>
